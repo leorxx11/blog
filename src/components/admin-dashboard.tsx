@@ -75,6 +75,13 @@ export default function AdminDashboard({ initialPosts }: AdminDashboardProps) {
               </button>
 
               <Link
+                href="/admin/about"
+                className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+              >
+                关于设置
+              </Link>
+
+              <Link
                 href="/admin/editor"
                 className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
               >

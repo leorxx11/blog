@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import { ArrowRight, Calendar, Clock, Tag, Coffee, Heart, Smile } from 'lucide-react';
-import { getAllPosts, getFeaturedPosts, getAllTags } from '@/lib/posts';
-import { siteConfig } from '@/lib/config';
+import { ArrowRight, Calendar, Coffee, Heart, Smile } from 'lucide-react';
+import { getAllPosts, getFeaturedPosts } from '@/lib/posts';
 
 export default function HomePage() {
   const posts = getAllPosts().slice(0, 6);
   const featuredPosts = getFeaturedPosts(3);
-  const tags = getAllTags().slice(0, 20);
+  // 标签页已移除：不再在首页展示标签入口
 
   return (
     <div className="min-h-screen">
@@ -169,50 +168,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tags Cloud - 标签星空 */}
-      {tags.length > 0 && (
-        <section className="py-16 bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-gray-800 dark:to-gray-900">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                🏷️ 标签星空
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
-                这些是我常写的话题，点击看看有没有你感兴趣的 ✨
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                {tags.map((tag, index) => (
-                  <Link
-                    key={tag.slug}
-                    href={`/tags/${tag.slug}`}
-                    className="group inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full border-2 border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/20 dark:hover:to-pink-900/20 transition-all duration-300 transform hover:scale-105"
-                    style={{
-                      fontSize: `${Math.max(0.75, 1 - index * 0.05)}rem`,
-                    }}
-                  >
-                    <span className="mr-1">
-                      {index < 5 ? '⭐' : index < 10 ? '🌟' : '✨'}
-                    </span>
-                    {tag.name}
-                    <span className="ml-2 text-xs bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/50 dark:to-pink-900/50 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded-full group-hover:from-purple-200 group-hover:to-pink-200 dark:group-hover:from-purple-800/50 dark:group-hover:to-pink-800/50">
-                      {tag.count}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-              <div className="mt-8">
-                <Link
-                  href="/tags"
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
-                >
-                  探索更多标签 🚀
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* 移除标签页后，隐藏标签星空与跳转入口 */}
     </div>
   );
 }

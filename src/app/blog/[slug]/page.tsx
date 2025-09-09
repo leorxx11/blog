@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { Calendar, Clock, Tag, ArrowLeft, ArrowRight, User } from 'lucide-react';
+import { Calendar, Clock, Tag, ArrowLeft, User } from 'lucide-react';
 import { getAllPostSlugs, getPostBySlug, getRelatedPosts } from '@/lib/posts';
 import { MDXContent } from '@/components/mdx-content';
 import { TableOfContents } from '@/components/table-of-contents';
@@ -140,33 +140,27 @@ export default function PostPage({ params }: PostPageProps) {
                       {post.summary}
                     </p>
 
-                    {/* 标签 */}
+                    {/* 标签（标签页已移除，改为非链接展示） */}
                     {post.tags.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-4">
                         {post.tags.map((tag) => (
-                          <Link
+                          <span
                             key={tag}
-                            href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
+                            className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200"
                           >
                             <Tag className="h-3 w-3 mr-1" />
                             {tag}
-                          </Link>
+                          </span>
                         ))}
                       </div>
                     )}
 
-                    {/* 系列信息 */}
+                    {/* 系列信息（系列页已移除，改为纯文本） */}
                     {post.series && (
                       <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
                         <p className="text-sm text-blue-800 dark:text-blue-200">
                           <span className="font-medium">系列文章：</span>
-                          <Link
-                            href={`/series/${post.series.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="hover:underline"
-                          >
-                            {post.series}
-                          </Link>
+                          <span>{post.series}</span>
                           {post.seriesOrder && (
                             <span className="ml-2">（第 {post.seriesOrder} 篇）</span>
                           )}

@@ -16,14 +16,13 @@
 
 ### 🎨 写作与组织
 - ✅ **文档结构** - `/posts/{yyyy}/{slug}/index.md` 按年份组织
-- ✅ **标签/分类** - 灵活的内容分类系统
-- ✅ **系列/专栏** - 支持系列文章导航
+- ✅ **分类** - 灵活的内容分类系统（标签保留为文章元信息，用于展示，不再提供“标签页”）
+- ✅ **系列信息（纯展示）** - 可在文章中标注系列与顺序，页面内展示文本标识（不再提供“系列页”）
 - ✅ **文章推荐** - 相关文章推荐算法
 
 ### 🔍 搜索与信息检索
 - ✅ **即时搜索** - 基于 Fuse.js 的智能搜索
 - ✅ **中文优化** - 友好的中文搜索体验
-- ✅ **标签过滤** - 按标签筛选文章
 
 ### 🎪 展示与交互
 - ✅ **响应式设计** - 完美适配各种设备
@@ -98,6 +97,8 @@ export const siteConfig: SiteConfig = {
 };
 ```
 
+此外，“关于我”页面信息已支持后台管理：登录后台后访问 `/admin/about` 可编辑姓名、邮箱、头像、简介、正文（Markdown）以及头图背景（支持填 URL、上传图片、纯色或渐变）。
+
 ### 5. 启动开发服务器
 
 ```bash
@@ -136,8 +137,8 @@ summary: "文章摘要"
 slug: "article-slug"
 draft: false
 featured: true
-series: "系列名称"
-seriesOrder: 1
+series: "系列名称" # 可选，仅页面内展示文本
+seriesOrder: 1      # 可选，仅页面内展示文本顺序
 ---
 
 # 文章内容
@@ -149,14 +150,14 @@ seriesOrder: 1
 
 - `title`: 文章标题（必需）
 - `date`: 发布日期（必需）
-- `tags`: 标签数组
+- `tags`: 标签数组（用于文章内展示，不再提供“标签页”）
 - `categories`: 分类数组
 - `summary`: 文章摘要（必需）
 - `slug`: URL slug（必需）
 - `draft`: 是否为草稿
 - `featured`: 是否为推荐文章
-- `series`: 系列名称
-- `seriesOrder`: 系列中的顺序
+- `series`: 系列名称（用于文章内展示，不再提供“系列页”）
+- `seriesOrder`: 系列中的顺序（用于文章内展示）
 - `author`: 作者名称
 
 ## 🎨 自定义
@@ -189,6 +190,8 @@ theme: {
 2. 在 Vercel 中导入项目
 3. 设置环境变量
 4. 部署完成
+
+注意：若使用后台“上传头图”，文件会保存到 `public/uploads`。在无持久化文件系统的平台上（如 Vercel 的 Serverless），上传文件不会长期保留，建议改用“填写远程图片 URL”或接入对象存储。
 
 ### Netlify 部署
 
@@ -291,3 +294,11 @@ AUTH_SECRET=a-very-strong-random-secret
 - 未配置任一环境变量时，中间件会对 `/admin` 返回 500，避免后台误暴露。
 - 登录状态通过 `auth_token` 的 HTTP-only Cookie 维持，过期需重新登录。
 - 仅你拥有凭证即可进入；如需 OAuth/邮箱白名单，可后续接入 NextAuth。
+## 🧩 关于页管理（后台）
+
+- 后台入口：`/admin/about`（登录后访问）
+- 数据存储：`content/about.json`
+- 可编辑项：姓名、邮箱、头像 URL、简介、正文（Markdown）、头图背景（图片/纯色/渐变）
+- 上传接口：`POST /api/upload`（保存到 `public/uploads`，需注意持久化）
+
+图片域名白名单：若头像使用外链，请在 `next.config.js` 中配置 `images.remotePatterns`（推荐）或 `images.domains` 以允许加载该域名。

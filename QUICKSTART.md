@@ -58,6 +58,9 @@ summary: "这是我的第一篇博客文章，记录我的博客之旅的开始�
 slug: "my-first-post"
 draft: false
 featured: true
+# 可选：系列信息（仅页面内展示，不再提供“系列页”）
+# series: "系列名称"
+# seriesOrder: 1
 ---
 
 # 欢迎来到我的博客
@@ -147,6 +150,16 @@ featured: true
 ```
 
 设置 `featured: true` 让文章出现在首页推荐区域。
+
+### 管理“关于我”
+
+登录后台后访问 `/admin/about`：
+
+- 编辑姓名、邮箱、头像 URL、简介与“关于我”正文（Markdown）
+- 自定义头图背景：填写图片 URL / 上传图片（保存到 `public/uploads`）/ 选择纯色或渐变
+- 数据存储在 `content/about.json`
+
+> 说明：在无持久化文件系统的平台（如 Vercel Serverless）上，上传的文件不会长期保留，推荐使用“图片 URL”。
 
 ## 🔧 常用命令
 

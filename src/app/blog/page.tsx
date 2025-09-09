@@ -103,14 +103,13 @@ export default function BlogPage() {
                       {post.tags.length > 0 && (
                         <div className="flex flex-wrap gap-2 mb-4">
                           {post.tags.map((tag) => (
-                            <Link
+                            <span
                               key={tag}
-                              href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
+                              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300"
                             >
                               <Tag className="h-3 w-3 mr-1" />
                               {tag}
-                            </Link>
+                            </span>
                           ))}
                         </div>
                       )}
@@ -178,33 +177,24 @@ export default function BlogPage() {
                 </div>
               )}
 
-              {/* 热门标签 */}
+              {/* 热门话题（标签页移除，改为非链接展示） */}
               {tags.length > 0 && (
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    热门标签
+                    热门话题
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {tags.map((tag) => (
-                      <Link
+                      <span
                         key={tag.slug}
-                        href={`/tags/${tag.slug}`}
-                        className="inline-flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-700 dark:hover:text-primary-300 transition-colors text-sm"
+                        className="inline-flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
                       >
                         {tag.name}
                         <span className="ml-1.5 text-xs bg-gray-200 dark:bg-gray-600 px-1.5 py-0.5 rounded-full">
                           {tag.count}
                         </span>
-                      </Link>
+                      </span>
                     ))}
-                  </div>
-                  <div className="mt-4">
-                    <Link
-                      href="/tags"
-                      className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium"
-                    >
-                      查看所有标签 →
-                    </Link>
                   </div>
                 </div>
               )}

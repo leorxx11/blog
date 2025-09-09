@@ -70,7 +70,7 @@ const parseMarkdown = (markdown: string): string => {
     });
 
   // 2) Headings with stable IDs (to match TOC)
-  preprocessed = preprocessed.replace(/^(#{1,6})\s+(.+)$/gm, (match, hashes, title) => {
+  preprocessed = preprocessed.replace(/^(#{1,6})\s+(.+)$/gm, (_m, hashes, title) => {
     const level = (hashes as string).length;
     const id = generateId((title as string).trim());
     const classes = {

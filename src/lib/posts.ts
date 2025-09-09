@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
-import { Post, PostMeta, TableOfContent } from '@/types/blog';
+import { Post, TableOfContent } from '@/types/blog';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 

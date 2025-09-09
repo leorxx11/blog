@@ -44,8 +44,8 @@ summary: "这是一篇关于前端技术的精彩文章，介绍了最新的开�
 slug: "my-awesome-post"
 draft: false
 featured: true
-series: "前端开发系列"
-seriesOrder: 1
+series: "前端开发系列"      # 可选，仅页面内展示文本
+seriesOrder: 1              # 可选，仅页面内展示文本顺序
 author: "作者名字"
 ---
 
@@ -104,12 +104,12 @@ greet('World');
 | `date` | string | ✅ | 发布日期 (YYYY-MM-DD) |
 | `summary` | string | ✅ | 文章摘要 |
 | `slug` | string | ✅ | URL 标识符 |
-| `tags` | array | ⭐ | 标签列表 |
+| `tags` | array | ⭐ | 标签列表（用于文章内展示；“标签页”已移除） |
 | `categories` | array | ⭐ | 分类列表 |
 | `draft` | boolean | ⭐ | 是否为草稿，默认 false |
 | `featured` | boolean | ❌ | 是否推荐，默认 false |
-| `series` | string | ❌ | 系列名称 |
-| `seriesOrder` | number | ❌ | 系列中的顺序 |
+| `series` | string | ❌ | 系列名称（用于文章内展示；“系列页”已移除） |
+| `seriesOrder` | number | ❌ | 系列中的顺序（用于文章内展示） |
 | `author` | string | ❌ | 作者名称 |
 
 ## 🎨 Markdown 语法支持
@@ -209,7 +209,7 @@ summary: "详细介绍 React Hooks 的使用方法，包含 useState、useEffect
 ---
 ```
 
-### 3. 标签选择
+### 3. 标签选择（用于文章内展示）
 
 ```markdown
 ---
@@ -233,12 +233,14 @@ tags: ["React", "JavaScript", "前端开发", "Hooks", "最佳实践"]
 - 包含技能级别：入门、进阶、高级
 - 添加主题分类：教程、总结、评测
 
-### 3. 系列文章
+### 3. 系列文章（纯展示）
 
 ```markdown
 ---
 series: "React 进阶系列"
 seriesOrder: 1
+
+> 注：系列与顺序仅在文章页面内展示为提示，不再提供“系列页”聚合。
 ---
 ```
 

@@ -1,11 +1,10 @@
 import { NextResponse } from 'next/server';
-import { getAllPosts, getAllTags, getAllCategories } from '@/lib/posts';
+import { getAllPosts, getAllCategories } from '@/lib/posts';
 import { siteConfig } from '@/lib/config';
 
 export async function GET() {
   try {
     const posts = getAllPosts();
-    const tags = getAllTags();
     const categories = getAllCategories();
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -22,12 +21,7 @@ export async function GET() {
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
-    <loc>${siteConfig.url}/tags</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  
   <url>
     <loc>${siteConfig.url}/categories</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
@@ -51,17 +45,7 @@ export async function GET() {
   </url>`
     )
     .join('')}
-  ${tags
-    .map(
-      (tag) => `
-  <url>
-    <loc>${siteConfig.url}/tags/${tag.slug}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>`
-    )
-    .join('')}
+  
   ${categories
     .map(
       (category) => `

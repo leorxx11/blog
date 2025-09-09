@@ -100,6 +100,9 @@ Vercel 是 Next.js 的官方托管平台，部署最简单：
 NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 NEXT_PUBLIC_SITE_NAME=你的博客名称
 NEXT_PUBLIC_GA_ID=你的 Google Analytics ID
+AUTH_SECRET=用于后台登录 JWT 的密钥
+ADMIN_USER=后台用户名
+ADMIN_PASS=后台密码
 ```
 
 ### 2. SEO 优化
@@ -232,6 +235,29 @@ module.exports = {
   },
 };
 ```
+
+### 3. 远程图片域名
+
+Next.js 14 建议使用 `images.remotePatterns` 配置远程图片白名单：
+
+```js
+// next.config.js
+module.exports = {
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'example.com' },
+      { protocol: 'https', hostname: 'lxx211.icu' },
+    ],
+  },
+};
+```
+
+> 如果仍使用 `images.domains` 会有弃用警告，不影响功能但建议迁移。
+
+### 4. 后台“关于我”上传
+
+- 上传接口：`POST /api/upload`，文件保存到 `public/uploads`
+- 若平台无持久化文件系统（如 Vercel Serverless），上传文件不会长期保留，推荐直接使用远程图片 URL 或改用对象存储（S3 / COS / OSS）
 
 ## 📱 PWA 配置（可选）
 

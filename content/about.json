@@ -1,0 +1,16 @@
+{
+  "name": "Leo",
+  "email": "zhao2233198920@gmail.com",
+  "avatar": "https://lxx211.icu/IMG_3748.PNG",
+  "bio": "热爱技术，分享知识",
+  "about": "hi",
+  "header": {
+    "gradientFrom": "#cc0022",
+    "gradientTo": "#7b40d4"
+  },
+  "social": {
+    "github": "",
+    "twitter": "",
+    "linkedin": ""
+  }
+}

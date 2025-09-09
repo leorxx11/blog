@@ -86,13 +86,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </time>
                 <div className="flex flex-wrap gap-2 mt-2 sm:mt-0">
                   {post.tags?.map((tag) => (
-                    <Link
+                    <span
                       key={tag}
-                      href={`/tags/${encodeURIComponent(tag)}`}
-                      className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                      className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded"
                     >
                       #{tag}
-                    </Link>
+                    </span>
                   ))}
                 </div>
               </div>

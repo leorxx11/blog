@@ -35,9 +35,7 @@ export const siteConfig: SiteConfig = {
 export const navigationItems = [
   { title: '首页', href: '/' },
   { title: '博客', href: '/blog' },
-  { title: '标签', href: '/tags' },
   { title: '分类', href: '/categories' },
-  { title: '系列', href: '/series' },
   { title: '关于', href: '/about' },
   { title: '管理', href: '/admin' },
 ];

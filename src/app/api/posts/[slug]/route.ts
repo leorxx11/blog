@@ -6,7 +6,7 @@ import path from 'path';
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 
 export async function GET(
-  request: NextRequest,
+  _req: NextRequest,
   { params }: { params: { slug: string } }
 ) {
   try {
@@ -24,7 +24,7 @@ export async function GET(
 }
 
 export async function DELETE(
-  request: NextRequest,
+  _req: NextRequest,
   { params }: { params: { slug: string } }
 ) {
   try {

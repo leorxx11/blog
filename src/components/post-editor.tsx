@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Save, Eye, ArrowLeft, FileText, Calendar, Tag, User } from 'lucide-react';
+import { Save, ArrowLeft, FileText, Calendar, Tag, User } from 'lucide-react';
 
 interface PostData {
   title: string;
