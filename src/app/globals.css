@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .prose-custom {
+    @apply prose prose-gray max-w-none dark:prose-dark;
+  }
+  
+  .prose-custom pre {
+    @apply bg-gray-100 text-gray-800 rounded-lg p-4 overflow-x-auto border border-gray-200 shadow-sm;
+  }
+  
+  .prose-custom code {
+    @apply text-sm font-mono bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-gray-800 dark:text-gray-200;
+  }
+  
+  .prose-custom pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* 移除过度覆盖颜色，保留语法高亮的 token 颜色 */
+  
+  /* 暗色模式下的代码块优化 */
+  .dark .prose-custom pre {
+    @apply bg-gray-900 text-gray-100 border-gray-700;
+  }
+  
+  /* 行内代码在暗色模式下的优化 */
+  .dark .prose-custom code {
+    @apply bg-gray-700 text-gray-100;
+  }
+  
+  .dark .prose-custom pre code {
+    background: transparent;
+    color: inherit;
+  }
+  
+  /* 让 token 颜色在暗色模式下生效 */
+  
+  .toc-link {
+    @apply block py-1 px-2 text-sm text-gray-600 hover:text-primary-600 hover:bg-gray-100 rounded transition-colors duration-200 dark:text-gray-300 dark:hover:text-primary-400 dark:hover:bg-gray-800;
+  }
+  
+  .toc-link.active {
+    @apply text-primary-600 bg-primary-50 border-r-2 border-primary-600 dark:text-primary-400 dark:bg-primary-900/20 dark:border-primary-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* 自定义滚动条样式 */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(209 213 219);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(156 163 175);
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(75 85 99);
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(107 114 128);
+  }
+}
+
+/* Code highlighting base - light/dark theme */
+.hljs {
+  @apply bg-gray-100 text-gray-800 rounded-lg;
+}
+.dark .hljs {
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* 代码块内的语法高亮 */
+.prose-custom pre code .hljs-keyword {
+  color: #66d9ef !important;
+}
+
+.prose-custom pre code .hljs-string {
+  color: #a6e22e !important;
+}
+
+.prose-custom pre code .hljs-comment {
+  color: #75715e !important;
+}
+
+.prose-custom pre code .hljs-number {
+  color: #ae81ff !important;
+}
+
+.prose-custom pre code .hljs-built_in {
+  color: #f92672 !important;
+}
+
+.prose-custom pre code .hljs-literal {
+  color: #ae81ff !important;
+}
+
+.prose-custom pre code .hljs-attr {
+  color: #a6e22e !important;
+}
+
+.prose-custom pre code .hljs-tag {
+  color: #f92672 !important;
+}
+
+.prose-custom pre code .hljs-name {
+  color: #f92672 !important;
+}
+
+.prose-custom pre code .hljs-selector-tag {
+  color: #f92672 !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Search highlight */
+.search-highlight {
+  @apply bg-yellow-200 dark:bg-yellow-800 px-1 rounded;
+}
+
+/* Personal blog animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.animate-rainbow {
+  animation: rainbow 5s linear infinite;
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Glass morphism effect */
+.glass {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
