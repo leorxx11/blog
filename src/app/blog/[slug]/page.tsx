@@ -5,6 +5,7 @@ import { Calendar, Clock, Tag, ArrowLeft, User } from 'lucide-react';
 import { getAllPostSlugs, getPostBySlug, getRelatedPosts } from '@/lib/posts';
 import { MDXContent } from '@/components/mdx-content';
 import { TableOfContents } from '@/components/table-of-contents';
+import { siteConfig } from '@/lib/config';
 
 interface PostPageProps {
   params: {
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
     title: post.title,
     description: post.summary,
     keywords: post.tags,
-    authors: [{ name: post.author || '博主' }],
+    authors: [{ name: post.author || siteConfig.author.name }],
     openGraph: {
       title: post.title,
       description: post.summary,
@@ -65,7 +66,7 @@ export default function PostPage({ params }: PostPageProps) {
     dateModified: post.lastModified || post.date,
     author: {
       '@type': 'Person',
-      name: post.author || '博主',
+      name: post.author || siteConfig.author.name,
     },
     keywords: post.tags.join(', '),
     wordCount: post.wordCount,

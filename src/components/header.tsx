@@ -21,10 +21,6 @@ export function Header() {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-rose-100 dark:border-gray-800 bg-white/90 backdrop-blur-md dark:bg-gray-900/90 shadow-sm">
@@ -68,13 +64,19 @@ export function Header() {
               {/* Theme toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2 text-gray-600 hover:text-orange-600 dark:text-gray-300 dark:hover:text-orange-400 transition-all duration-300 rounded-full hover:bg-orange-50 dark:hover:bg-orange-900/20 transform hover:scale-110"
+                disabled={!mounted}
+                className="p-2 text-gray-600 hover:text-orange-600 dark:text-gray-300 dark:hover:text-orange-400 transition-all duration-300 rounded-full hover:bg-orange-50 dark:hover:bg-orange-900/20 transform hover:scale-110 disabled:opacity-60 disabled:cursor-not-allowed"
                 aria-label="切换主题"
               >
-                {theme === 'dark' ? (
-                  <Sun className="h-5 w-5" />
+                {mounted ? (
+                  theme === 'dark' ? (
+                    <Sun className="h-5 w-5" />
+                  ) : (
+                    <Moon className="h-5 w-5" />
+                  )
                 ) : (
-                  <Moon className="h-5 w-5" />
+                  // 占位以防止布局抖动
+                  <span className="inline-block h-5 w-5" />
                 )}
               </button>
 

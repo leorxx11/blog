@@ -32,11 +32,12 @@ export function getAboutData(): AboutData {
       const data = JSON.parse(raw) as AboutData;
       // Merge with defaults to ensure keys exist; ensure 'about' falls back when empty
       const base = getDefaultAboutData();
+      // 姓名与邮箱以站点配置为唯一来源，避免多处维护
       return {
         ...base,
         ...data,
-        name: data.name && String(data.name).trim() ? data.name : base.name,
-        email: data.email && String(data.email).trim() ? data.email : base.email,
+        name: base.name,
+        email: base.email,
         avatar: data.avatar && String(data.avatar).trim() ? data.avatar : base.avatar,
         bio: data.bio && String(data.bio).trim() ? data.bio : base.bio,
         about: data.about && String(data.about).trim() ? data.about : base.about,

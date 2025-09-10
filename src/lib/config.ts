@@ -1,11 +1,11 @@
 import { SiteConfig } from '@/types/blog';
 
 export const siteConfig: SiteConfig = {
-  name: '个人博客',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || '个人博客',
   description: '分享技术、思考与生活的个人博客',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com',
   author: {
-    name: '您的名字',
+    name: process.env.NEXT_PUBLIC_AUTHOR_NAME || '您的名字',
     email: 'zhao2233198920@gmail.com',
     avatar: '/avatar.jpg',
     bio: '热爱技术，分享知识',

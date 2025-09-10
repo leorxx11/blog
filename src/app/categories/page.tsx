@@ -1,9 +1,10 @@
 import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: '分类 - 个人博客',
+  title: `分类 - ${siteConfig.name}`,
   description: '浏览所有文章分类',
 };
 

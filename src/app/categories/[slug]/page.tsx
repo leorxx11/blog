@@ -2,6 +2,7 @@ import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { siteConfig } from '@/lib/config';
 
 interface CategoryPageProps {
   params: {
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const category = decodeURIComponent(params.slug);
   
   return {
-    title: `${category} - 分类 - 个人博客`,
+    title: `${category} - 分类 - ${siteConfig.name}`,
     description: `浏览 ${category} 分类下的所有文章`,
   };
 }

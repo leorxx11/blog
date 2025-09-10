@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, ArrowLeft, FileText, Calendar, Tag, User } from 'lucide-react';
+import { siteConfig } from '@/lib/config';
 
 interface PostData {
   title: string;
@@ -38,7 +39,7 @@ export default function PostEditor({ slug, initialData }: PostEditorProps) {
     slug: '',
     draft: true,
     featured: false,
-    author: 'Leo',
+    author: siteConfig.author.name,
     content: '',
     ...initialData
   });
